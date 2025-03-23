@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STEAM in the Digital Age | Misel Rajasyah Hadi Putra</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    body {
+      background-color: #111827;
+      color: #f9fafb;
+      overflow-x: hidden;
+      background-image: 
+        linear-gradient(to bottom, rgba(17, 24, 39, 0.9), rgba(17, 24, 39, 0.99)),
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,0 L100,100" stroke-width="0.5" stroke="rgba(79, 70, 229, 0.1)"/><path d="M100,0 L0,100" stroke-width="0.5" stroke="rgba(79, 70, 229, 0.1)"/></svg>');
+      background-size: 20px 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    
+    header {
+      position: relative;
+      text-align: center;
+      padding: 60px 0;
+      overflow: hidden;
+      margin-bottom: 60px;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(79, 70, 229, 0.2) 0%, rgba(245, 58, 58, 0.2) 50%, rgba(39, 199, 171, 0.2) 100%);
+      filter: blur(50px);
+      z-index: -1;
+    }
+    
+    .title {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, #4f46e5, #f53a3a, #27c7ab);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      line-height: 1.2;
+    }
+    
+    .subtitle {
+      font-size: 1.5rem;
+      color: #d1d5db;
+      margin-bottom: 30px;
+    }
+    
+    .author {
+      display: inline-block;
+      padding: 8px 16px;
+      background: rgba(79, 70, 229, 0.2);
+      border-radius: 50px;
+      font-size: 0.9rem;
+      color: #d1d5db;
+      margin-top: 10px;
+      border: 1px solid rgba(79, 70, 229, 0.4);
+    }
+    
+    .steam-letters {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0;
+      perspective: 1000px;
+    }
+    
+    .steam-letter {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 10px;
+      font-size: 2.5rem;
+      font-weight: 800;
+      position: relative;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+      transform-style: preserve-3d;
+    }
+    
+    .steam-letter:hover {
+      transform: translateY(-10px) rotateY(10deg);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .steam-letter::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 12px;
+      background: inherit;
+      filter: blur(8px);
+      opacity: 0.7;
+      z-index: -1;
+    }
+    
+    .letter-s {
+      background: linear-gradient(135deg, #f53a3a, #ff7676);
+    }
+    
+    .letter-t {
+      background: linear-gradient(135deg, #ff9f1c, #ffbf69);
+    }
+    
+    .letter-e {
+      background: linear-gradient(135deg, #4f46e5, #818cf8);
+    }
+    
+    .letter-a {
+      background: linear-gradient(135deg, #27c7ab, #6ee7b7);
+    }
+    
+    .letter-m {
+      background: linear-gradient(135deg, #9333ea, #c084fc);
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 30px;
+    }
+    
+    .grid-item {
+      background: rgba(31, 41, 55, 0.8);
+      border-radius: 16px;
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .grid-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      border-color: rgba(79, 70, 229, 0.4);
+    }
+    
+    .grid-item::after {
+      content: "";
+      position: absolute;
+      height: 200px;
+      width: 200px;
+      background: radial-gradient(circle, rgba(79, 70, 229, 0.4) 0%, transparent 70%);
+      bottom: -100px;
+      right: -100px;
+      border-radius: 100%;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    .grid-item:hover::after {
+      opacity: 1;
+    }
+    
+    .col-span-6 {
+      grid-column: span 6;
+    }
+    
+    .col-span-12 {
+      grid-column: span 12;
+    }
+    
+    .col-span-4 {
+      grid-column: span 4;
+    }
+    
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #f9fafb;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    
+    .section-title::before {
+      content: "";
+      display: block;
+      width: 30px;
+      height: 4px;
+      margin-right: 12px;
+      border-radius: 2px;
+      background: linear-gradient(to right, #4f46e5, #27c7ab);
+    }
+    
+    .expert {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .expert-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #4f46e5, #27c7ab);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #f9fafb;
+      margin-right: 15px;
+    }
+    
+    .expert-info h3 {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+    
+    .expert-info p {
+      font-size: 0.9rem;
+      color: #9ca3af;
+    }
+    
+    .feature-list {
+      list-style: none;
+      margin-top: 20px;
+    }
+    
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .feature-icon {
+      min-width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(79, 70, 229, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      color: #4f46e5;
+      font-size: 1.5rem;
+      transition: transform 0.3s;
+    }
+    
+    .feature-item:hover .feature-icon {
+      transform: scale(1.1) rotate(10deg);
+      background: rgba(79, 70, 229, 0.3);
+    }
+    
+    .feature-content h3 {
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+    
+    .feature-content p {
+      font-size: 0.95rem;
+      color: #9ca3af;
+      line-height: 1.5;
+    }
+    
+    .challenge {
+      display: flex;
+      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 8px;
+      background: rgba(245, 58, 58, 0.1);
+      border-left: 3px solid #f53a3a;
+    }
+    
+    .challenge p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    
+    .solution {
+      display: flex;
+      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 8px;
+      background: rgba(39, 199, 171, 0.1);
+      border-left: 3px solid #27c7ab;
+    }
+    
+    .solution p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    
+    .tag {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      background: rgba(79, 70, 229, 0.2);
+      color: #a5b4fc;
+      border: 1px solid rgba(79, 70, 229, 0.4);
+      transition: transform 0.2s, background 0.2s;
+    }
+    
+    .tag:hover {
+      transform: scale(1.05);
+      background: rgba(79, 70, 229, 0.3);
+    }
+    
+    .tags {
+      margin: 20px 0;
+    }
+    
+    .evaluation-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .evaluation-item {
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    
+    .high {
+      background: rgba(39, 199, 171, 0.2);
+      border: 1px solid rgba(39, 199, 171, 0.4);
+    }
+    
+    .medium {
+      background: rgba(255, 159, 28, 0.2);
+      border: 1px solid rgba(255, 159, 28, 0.4);
+    }
+    
+    .low {
+      background: rgba(245, 58, 58, 0.2);
+      border: 1px solid rgba(245, 58, 58, 0.4);
+    }
+    
+    .evaluation-title {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+    
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 30px 0;
+      color: #9ca3af;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .rotating-gear {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      opacity: 0.1;
+      z-index: -1;
+    }
+    
+    .gear-1 {
+      top: -30px;
+      right: -30px;
+      animation: rotate 20s linear infinite;
+    }
+    
+    .gear-2 {
+      bottom: -30px;
+      left: -30px;
+      animation: rotate 30s linear infinite reverse;
+    }
+    
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .col-span-6, .col-span-4, .col-span-12 {
+        grid-column: span 1;
+      }
+      
+      .steam-letter {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+      }
+      
+      .title {
+        font-size: 2rem;
+      }
+      
+      .subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .evaluation-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1 class="title">STEAM in the Digital Age</h1>
+      <h2 class="subtitle">Innovations in STEAM Education and Technology Integration</h2>
+      <div class="steam-letters">
+        <div class="steam-letter letter-s">S</div>
+        <div class="steam-letter letter-t">T</div>
+        <div class="steam-letter letter-e">E</div>
+        <div class="steam-letter letter-a">A</div>
+        <div class="steam-letter letter-m">M</div>
+      </div>
+      <p class="author">Misel Rajasyah Hadi Putra • 23030174002 • PM 2023 A</p>
+    </header>
+    
+    <div class="grid">
+      <div class="grid-item col-span-6">
+        <svg class="rotating-gear gear-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#4f46e5" d="M50,16.6c2.5,0,4.9,0.3,7.2,0.8l1.1-7.2c0.2-1.5,1.5-2.6,3-2.6h5.5c1.5,0,2.8,1.1,3,2.6l1.1,7.2c2.3-0.5,4.7-0.8,7.2-0.8c2.5,0,4.9,0.3,7.2,0.8l1.1-7.2c0.2-1.5,1.5-2.6,3-2.6h5.5c1.5,0,2.8,1.1,3,2.6l1.1,7.2c2.3-0.5,4.7-0.8,7.2-0.8v5.5c-3.1,0-6.1,0.5-8.9,1.4l-2.3-6.8c-0.5-1.4-2-2.1-3.4-1.7l-5.2,1.8c-1.4,0.5-2.1,2-1.7,3.4l2.2,6.8c-2.3,1.4-4.4,3.1-6.2,5l-5.7-4.3c-1.2-0.9-2.8-0.7-3.7,0.5l-3.3,4.4c-0.9,1.2-0.7,2.8,0.5,3.7l5.7,4.3c-1,2.5-1.6,5.2-1.6,8c0,2.8,0.6,5.5,1.6,8l-5.7,4.3c-1.2,0.9-1.4,2.5-0.5,3.7l3.3,4.4c0.9,1.2,2.5,1.4,3.7,0.5l5.7-4.3c1.8,1.9,3.9,3.6,6.2,5l-2.2,6.8c-0.5,1.4,0.3,2.9,1.7,3.4l5.2,1.8c1.4,0.5,2.9-0.3,3.4-1.7l2.3-6.8c2.8,0.9,5.8,1.4,8.9,1.4v5.5c-2.5,0-4.9-0.3-7.2-0.8l-1.1,7.2c-0.2,1.5-1.5,2.6-3,2.6h-5.5c-1.5,0-2.8-1.1-3-2.6l-1.1-7.2c-2.3,0.5-4.7,0.8-7.2,0.8c-2.5,0-4.9-0.3-7.2-0.8l-1.1,7.2c-0.2,1.5-1.5,2.6-3,2.6h-5.5c-1.5,0-2.8-1.1-3-2.6l-1.1-7.2c-2.3,0.5-4.7,0.8-7.2,0.8v-5.5c3.1,0,6.1-0.5,8.9-1.4l2.3,6.8c0.5,1.4,2,2.1,3.4,1.7l5.2-1.8c1.4-0.5,2.1-2,1.7-3.4l-2.2-6.8c2.3-1.4,4.4-3.1,6.2-5l5.7,4.3c1.2,0.9,2.8,0.7,3.7-0.5l3.3-4.4c0.9-1.2,0.7-2.8-0.5-3.7l-5.7-4.3c1-2.5,1.6-5.2,1.6-8c0-2.8-0.6-5.5-1.6-8l5.7-4.3c1.2-0.9,1.4-2.5,0.5-3.7l-3.3-4.4c-0.9-1.2-2.5-1.4-3.7-0.5l-5.7,4.3c-1.8-1.9-3.9-3.6-6.2-5l2.2-6.8c0.5-1.4-0.3-2.9-1.7-3.4l-5.2-1.8c-1.4-0.5-2.9,0.3-3.4,1.7l-2.3,6.8c-2.8-0.9-5.8-1.4-8.9-1.4v-5.5c2.5,0,4.9,0.3,7.2,0.8l1.1-7.2c0.2-1.5,1.5-2.6,3-2.6h5.5c1.5,0,2.8,1.1,3,2.6l1.1,7.2C45.1,16.9,47.5,16.6,50,16.6z M50,33.2c9.3,0,16.8,7.5,16.8,16.8c0,9.3-7.5,16.8-16.8,16.8c-9.3,0-16.8-7.5-16.8-16.8C33.2,40.7,40.7,33.2,50,33.2z"/>
+        </svg>
+        <h2 class="section-title">AI in Higher Education</h2>
+        <div class="expert">
+          <div class="expert-avatar">BA</div>
+          <div class="expert-info">
+            <h3>Dr. Branco Andic</h3>
+            <p>Center for University Didactics and AI-Competent Teaching</p>
+          </div>
+        </div>
+        
+        <h3>AI as Learning Support</h3>
+        <ul class="feature-list">
+          <li class="feature-item">
+            <div class="feature-icon">1</div>
+            <div class="feature-content">
+              <h3>Personalization of learning</h3>
+              <p>Tailoring educational content and pace to individual student needs.</p>
+            </div>
+          </li>
+          <li class="feature-item">
+            <div class="feature-icon">2</div>
+            <div class="feature-content">
+              <h3>Blackmail in the zone of appropriate growth</h3>
+              <p>AI systems that challenge students at the optimal difficulty level.</p>
+            </div>
+          </li>
+          <li class="feature-item">
+            <div class="feature-icon">3</div>
+            <div class="feature-content">
+              <h3>Inquisitiveness</h3>
+              <p>Promoting curiosity and exploratory learning through AI tools.</p>
+            </div>
+          </li>
+          <li class="feature-item">
+            <div class="feature-icon">4</div>
+            <div class="feature-content">
+              <h3>Time and space accessible learning</h3>
+              <p>Learning that transcends traditional classroom limitations.</p>
+            </div>
+          </li>
+        </ul>
+        
+        <h3>Evaluation</h3>
+        <div class="evaluation-grid">
+          <div class="evaluation-item high">
+            <h4 class="evaluation-title">High Performance AI Tools</h4>
+          </div>
+          <div class="evaluation-item medium">
+            <h4 class="evaluation-title">Average Performance AI Tools</h4>
+          </div>
+          <div class="evaluation-item low">
+            <h4 class="evaluation-title">Low Performance AI Tools</h4>
+          </div>
+        </div>
+      </div>
+      
+      <div class="grid-item col-span-6">
+        <svg class="rotating-gear gear-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path fill="#27c7ab" d="M50,16.6c2.5,0,4.9,0.3,7.2,0.8l1.1-7.2c0.2-1.5,1.5-2.6,3-2.6h5.5c1.5,0,2.8,1.1,3,2.6l1.1,7.2c2.3-0.5,4.7-0.8,7.2-0.8c2.5,0,4.9,0.3,7.2,0.8l1.1-7.2c0.2-1.5,1.5-2.6,3-2.6h5.5c1.5,0,2.8,1.1,3,2.6l1.1,7.2c2.3-0.5,4.7-0.8,7.2-0.8v5.5c-3.1,0-6.1,0.5-8.9,1.4l-2.3-6.8c-0.5-1.4-2-2.1-3.4-1.7l-5.2,1.8c-1.4,0.5-2.1,2-1.7,3.4l2.2,6.8c-2.3,1.4-4.4,3.1-6.2,5l-5.7-4.3c-1.2-0.9-2.8-0.7-3.7,0.5l-3.3,4.4c-0.9,1.2-0.7,2.8,0.5,3.7l5.7,4.3c-1,2.5-1.6,5.2-1.6,8c0,2.8,0.6,5.5,1.6,8l-5.7,4.3c-1.2,0.9-1.4,2.5-0.5,3.7l3.3,4.4c0.9,1.2,2.5,1.4,3.7,0.5l5.7-4.3c1.8,1.9,3.9,3.6,6.2,5l-2.2,6.8c-0.5,1.4,0.3,2.9,1.7,3.4l5.2,1.8c1.4,0.5,2.9-0.3,3.4-1.7l2.3-6.8c2.8,0.9,5.8,1.4,8.9,1.4v5.5c-2.5,0-4.9-0.3-7.2-0.8l-1.1,7.2c-0.2,1.5-1.5,2.6-3,2.6h-5.5c-1.5,0-2.8-1.1-3-2.6l-1.1-7.2c-2.3,0.5-4.7,0.8-7.2,0.8c-2.5,0-4.9-0.3-7.2-0.8l-1.1,7.2c-0.2,1.5-1.5,2.6-3,2.6h-5.5c-1.5,0-2.8-1.1-3-2.6l-1.1-7.2c-2.3,0.5-4.7,0.8-7.2,0.8v-5.5c3.1,0,6.1-0.5,8.9-1.4l2.3,6.8c0.5,1.4,2,2.1,3.4,1.7l5.2-1.8c1.4-0.5,2.1-2,1.7-3.4l-2.2-6.8c2.3-1.4,4.4-3.1,6.2-5l5.7,4.3c1.2,0.9,2.8,0.7,3.7-0.5l3.3-4.4c0.9-1.2,0.7-2.8-0.5-3.7l-5.7-4.3c1-2.5,1.6-5.2,1.6-8c0-2.8-0.6-5.5-1.6-8l5.7-4.3c1.2-0.9,1.4-2.5,0.5-3.7l-3.3-4.4c-0.9-1.2-2.5-1.4-3.7-0.5l-5.7,4.3c-1.8-1.9-3.9-3.6-6.2-5l2.2-6.8c0.5-1.4-0.3-2.9-1.7-3.4l-5.2-1.8c-1.4-0.5-2.9,0.3-3.4,1.7l-2.3,6.8c-2.8-0.9-5.8-1.4-8.9-1.4v-5.5c2.5,0,4.9,0.3,7.2,0.8l1.1-7.2c0.2-1.5,1.5-2.6,3-2.6h5.5c1.5,0,2.8,1.1,3,2.6l1.1,7.2C45.1,16.9,47.5,16.6,50,16.6z M50,33.2c9.3,0,16.8,7.5,16.8,16.8c0,9.3-7.5,16.8-16.8,16.8c-9.3,0-16.8-7.5-16.8-16.8C33.2,40.7,40.7,33.2,50,33.2z"/>
+        </svg>
+        <h2 class="section-title">AI Learning Concerns</h2>
+        
+        <div style="padding: 20px; background: rgba(245, 58, 58, 0.1); border-radius: 12px; margin-bottom: 30px; border: 1px solid rgba(245, 58, 58, 0.3);">
+          <h3 style="color: #f53a3a; margin-bottom: 15px;">Deep Fake Learning and Lazy Cognition</h3>
+          <p>AI technologies such as ChatGPT may promote learners' dependence on technology and potentially trigger cognitive "laziness", which can potentially hinder their ability to self-regulate and engage deeply in learning.</p>
+        </div>
+        
+        <h3>AI as Learning Feedback and Resources</h3>
+        <ul class="feature-list">
+          <li class="feature-item">
+            <div class="feature-icon">1</div>
+            <div class="feature-content">
+              <h3>Conceptual understanding</h3>
+              <p>Developing deeper comprehension of core concepts through AI-assisted learning.</p>
+            </div>
+          </li>
+          <li class="feature-item">
+            <div class="feature-icon">2</div>
+            <div class="feature-content">
+              <h3
+              <h3>Critical thinking and evaluation</h3>
+              <p>Fostering analytical skills to assess information quality and validity.</p>
+            </div>
+          </li>
+          <li class="feature-item">
+            <div class="feature-icon">3</div>
+            <div class="feature-content">
+              <h3>Data and algorithm awareness</h3>
+              <p>Understanding the fundamentals of how AI and data processing works.</p>
+            </div>
+          </li>
+          <li class="feature-item">
+            <div class="feature-icon">4</div>
+            <div class="feature-content">
+              <h3>Practical AI application</h3>
+              <p>Implementing AI concepts in real-world educational contexts.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="grid-item col-span-4">
+        <h2 class="section-title">MatheArena: Learning Maths, Playfully</h2>
+        <div class="expert">
+          <div class="expert-avatar">EI</div>
+          <div class="expert-info">
+            <h3>Eva-Maria Infanger</h3>
+            <p>Founder and Managing Director, MatheArena</p>
+          </div>
+        </div>
+        
+        <h3>Challenges & Solutions</h3>
+        <div class="challenge">
+          <p>Students are frustrated with mathematics</p>
+        </div>
+        <div class="solution">
+          <p>Playfully approach to learning math concepts</p>
+        </div>
+        
+        <div class="challenge">
+          <p>Private tutoring is expensive</p>
+        </div>
+        <div class="solution">
+          <p>Low-cost accessibility for all students</p>
+        </div>
+        
+        <div class="challenge">
+          <p>Lack of competent technicians</p>
+        </div>
+        <div class="solution">
+          <p>Instant reward system and wider understanding of basic math skills</p>
+        </div>
+        
+        <h3>Innovation</h3>
+        <div class="tags">
+          <span class="tag">Microlearning</span>
+          <span class="tag">AI-Based</span>
+          <span class="tag">Smart Adaptive</span>
+          <span class="tag">Math Bot</span>
+          <span class="tag">Mobile & Remote</span>
+        </div>
+        
+        <h3>Psychological Approach</h3>
+        <ul class="feature-list">
+          <li class="feature-item">
+            <div class="feature-icon">✓</div>
+            <div class="feature-content">
+              <h3>Learner-oriented focus</h3>
+              <p>Tailoring the experience to individual learning styles.</p>
+            </div>
+          </li>
+          <li class="feature-item">
+            <div class="feature-icon">✓</div>
+            <div class="feature-content">
+              <h3>Minigames about maths</h3>
+              <p>Making learning enjoyable through gamification.</p>
+            </div>
+          </li>
+          <li class="feature-item">
+            <div class="feature-icon">✓</div>
+            <div class="feature-content">
+              <h3>Adaptive learning difficulty</h3>
+              <p>Adjusting challenges based on student performance.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="grid-item col-span-4">
+        <h2 class="section-title">EdTech Talents</h2>
+        <div class="expert">
+          <div class="expert-avatar">FM</div>
+          <div class="expert-info">
+            <h3>Dr. Filiz Mumcu</h3>
+            <p>Expert in Computer Science Education</p>
+          </div>
+        </div>
+        
+        <h3>The EdTech Talents Project</h3>
+        <ul class="feature-list">
+          <li class="feature-item">
+            <div class="feature-icon">•</div>
+            <div class="feature-content">
+              <p>To strengthen academia/non-academia cooperation.</p>
+            </div>
+          </li>
+          <li class="feature-item">
+            <div class="feature-icon">•</div>
+            <div class="feature-content">
+              <p>Reinforce the EdTech innovation ecosystem of Estonia and Serbia.</p>
+            </div>
+          </li>
+          <li class="feature-item">
+            <div class="feature-icon">•</div>
+            <div class="feature-content">
+              <p>By conducting a long-term knowledge transfer process.</p>
+            </div>
+          </li>
+        </ul>
+        
+        <h3>Instructional Design vs Educational Technologies</h3>
+        <p style="color: #d1d5db; line-height: 1.6; margin-top: 15px;">
+          Instructional design provides the systematic framework for creating, delivering, and evaluating educational content, while EdTech develops and offers the tools and platforms.
+        </p>
+        
+        <div class="tags" style="margin-top: 25px;">
+          <span class="tag">Cross-Border Secondment</span>
+          <span class="tag">Knowledge Transfer</span>
+          <span class="tag">Innovation Ecosystem</span>
+        </div>
+      </div>
+      
+      <div class="grid-item col-span-4">
+        <h2 class="section-title">The Experience Workshop and STE(PA)M</h2>
+        <div class="expert">
+          <div class="expert-avatar">KF</div>
+          <div class="expert-info">
+            <h3>Dr. Kristof Fenyvesi</h3>
+            <p>Senior Researcher in STEAM, Finnish Institution for Educational Research, University of Jyvaskyla</p>
+          </div>
+        </div>
+        
+        <h3>Focus: Experience Workshop</h3>
+        <ul class="feature-list">
+          <li class="feature-item">
+            <div class="feature-icon">•</div>
+            <div class="feature-content">
+              <h3>Education in Finland</h3>
+              <p>Exploring Finnish educational innovations and methodologies.</p>
+            </div>
+          </li>
+          <li class="feature-item">
+            <div class="feature-icon">•</div>
+            <div class="feature-content">
+              <h3>Hands-on Maths</h3>
+              <p>Practical, tactile approaches to mathematical learning.</p>
+            </div>
+          </li>
+          <li class="feature-item">
+            <div class="feature-icon">•</div>
+            <div class="feature-content">
+              <h3>Digital Modelling</h3>
+              <p>Integrating technology in educational modeling and simulation.</p>
+            </div>
+          </li>
+        </ul>
+        
+        <h3>Education integrating the natural science and the arts</h3>
+        <div class="tags">
+          <span class="tag">Phenomenon-based</span>
+          <span class="tag">Interdisciplinary learning</span>
+        </div>
+        
+        <h3>STE(PA)M: Teacher Training in Physical Activities</h3>
+        <div style="padding: 20px; background: rgba(79, 70, 229, 0.1); border-radius: 12px; margin: 20px 0; border: 1px solid rgba(79, 70, 229, 0.3);">
+          <h4 style="color: #818cf8; margin-bottom: 10px;">Embodied Learning</h4>
+          <p style="color: #d1d5db; line-height: 1.6;">
+            The STE(PA)M project introduces a novel educational approach integrating Physical Activities (PA) into STEAM education. Their consortium unites expertise from three European universities to develop comprehensive teacher training resources promoting embodied learning through STEAM education.
+          </p>
+        </div>
+      </div>
+      
+      <div class="grid-item col-span-12">
+        <h2 class="section-title">Global Trends in STEAM Education: Europe-Southeast Asia Collaboration</h2>
+        <p style="color: #d1d5db; line-height: 1.8; margin-bottom: 20px;">
+          The integration of STEAM education across global regions is creating opportunities for knowledge exchange and collaborative innovation. This section explores the emerging trends in Europe-Southeast Asia educational partnerships.
+        </p>
+        
+        <div class="evaluation-grid" style="grid-template-columns: repeat(4, 1fr);">
+          <div class="evaluation-item high">
+            <h4 class="evaluation-title">Interdisciplinary Learning</h4>
+            <p>Breaking down subject barriers for holistic education</p>
+          </div>
+          <div class="evaluation-item high">
+            <h4 class="evaluation-title">Technology Integration</h4>
+            <p>Incorporating digital tools in educational environments</p>
+          </div>
+          <div class="evaluation-item medium">
+            <h4 class="evaluation-title">Collaborative Teaching</h4>
+            <p>Cross-institutional and international educational partnerships</p>
+          </div>
+          <div class="evaluation-item medium">
+            <h4 class="evaluation-title">Project-Based Learning</h4>
+            <p>Real-world applications of STEAM concepts</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <p>NAME: MISEL RAJASYAH HADI PUTRA • CLASS: PM 2023 A • NIM: 23030174002</p>
+      <p style="margin-top: 10px;">STEAM in the Digital Age - Innovations in STEAM Education and Technology Integration &copy; 2025</p>
+    </footer>
+  </div>
+</body>
+</html>
